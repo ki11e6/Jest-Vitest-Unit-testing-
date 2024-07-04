@@ -1,30 +1,45 @@
-import { it, expect } from 'vitest';
+import { it, expect, describe } from 'vitest'
+import { transformToNumber, cleanNumbers } from './numbers'
 
-import { transformToNumber } from './numbers';
+describe('TransformToNumber', () => {
+  it('should transform a string number to a number of type number', () => {
+    const input = '1'
 
-it('should transform a string number to a number of type number', () => {
-  const input = '1';
+    const result = transformToNumber(input)
 
-  const result = transformToNumber(input);
+    expect(result).toBeTypeOf('number')
+  })
 
-  expect(result).toBeTypeOf('number');
-});
+  it('should transform a string number to a number of type number', () => {
+    const input = '1'
 
-it('should transform a string number to a number of type number', () => {
-  const input = '1';
+    const result = transformToNumber(input)
 
-  const result = transformToNumber(input);
+    expect(result).toBe(+input)
+  })
 
-  expect(result).toBe(+input);
-});
+  it('should yield NaN for non-transformable values', () => {
+    const input = 'invalid'
+    const input2 = {}
 
-it('should yield NaN for non-transformable values', () => {
-  const input = 'invalid';
-  const input2 = {};
+    const result = transformToNumber(input)
+    const result2 = transformToNumber(input2)
 
-  const result = transformToNumber(input);
-  const result2 = transformToNumber(input2);
+    expect(result).toBeNaN()
+    expect(result2).toBeNaN()
+  })
+})
 
-  expect(result).toBeNaN();
-  expect(result2).toBeNaN();
-});
+describe('cleanNumbers', () => {
+  it('should return a array of number values if an array of string number values is provided', () => {
+    const numberValues = ['1', '2']
+    const cleanedNumbers = cleanNumbers(numberValues)
+    expect(cleanedNumbers[1]).toBeTypeOf('number')
+  })
+
+  it('should return an error if an array with empty string values is provided', () => {
+    const numberValues = ['1', '']
+    const cleanedNumbers = () => cleanNumbers(numberValues)
+    expect(cleanedNumbers).toThrowError()
+  })
+})
