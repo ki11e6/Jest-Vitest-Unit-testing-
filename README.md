@@ -24,7 +24,16 @@ Example: You're testing a user registration class. After calling Save, it should
 
 link: https://stackoverflow.com/questions/3459287/whats-the-difference-between-a-mock-stub
 
-
+## learned methods
+- vi.mock
+- vi.fn
+- vi.stubGlobal
+- .mockImplementationOnce
+- beforeAll,
+  beforeEach,
+  afterAll,
+  afterEach
+- .concurrent
 
 
 <img src="./images/image-1.png"/>
