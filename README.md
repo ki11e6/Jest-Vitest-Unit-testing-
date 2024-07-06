@@ -34,6 +34,7 @@ link: https://stackoverflow.com/questions/3459287/whats-the-difference-between-a
   afterAll,
   afterEach
 - .concurrent
+- virtual html DOM using happy-dom
 
 
 <img src="./images/image-1.png"/>
